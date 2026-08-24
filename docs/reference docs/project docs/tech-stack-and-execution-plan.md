@@ -25,7 +25,10 @@ sample-reports-analysis.md). This doc records the chosen stack and turns the ori
 No Google Drive integration, no auth, no database, no patient portal, no dashboard, no
 automated clinical recommendations, no cross-report/longitudinal tracking (even though
 [[ivf-domain-knowledge]]'s antenatal section notes trends-across-visits are valuable
-clinically — that's a natural V2, not V1).
+clinically — that's a natural V2, not V1). Also considered and deferred: streaming the
+summary response token-by-token instead of returning it as one JSON blob — evaluated as
+~1hr of contained work (Anthropic SDK + FastAPI `StreamingResponse` + Vercel's Python
+runtime all support it), but not worth the UX gain for a POC.
 
 ## Execution Plan
 
