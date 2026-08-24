@@ -95,9 +95,11 @@ function App() {
             />
             <button
               type="button"
+              className="generate-btn"
               disabled={!file || loading}
               onClick={handleSummarize}
             >
+              {loading && <span className="spinner" aria-hidden="true" />}
               {loading ? 'Summarizing…' : 'Generate Summary'}
             </button>
           </div>
@@ -105,26 +107,39 @@ function App() {
           <div className="preview">
             {!file && <p className="hint">No file selected.</p>}
             {file && previewUrl && file.type === 'application/pdf' && (
-              <iframe src={previewUrl} title="Report preview" className="pdf-preview" />
+              <iframe
+                src={previewUrl}
+                title="Report preview"
+                className="pdf-preview fade-in"
+              />
             )}
             {file && previewUrl && file.type.startsWith('image/') && (
-              <img src={previewUrl} alt="Report preview" className="image-preview" />
+              <img
+                src={previewUrl}
+                alt="Report preview"
+                className="image-preview fade-in"
+              />
             )}
             {file && isTextFile && textPreview !== null && (
-              <pre className="text-preview">{textPreview}</pre>
+              <pre className="text-preview fade-in">{textPreview}</pre>
             )}
           </div>
         </section>
 
         <section className="panel">
           <h2>Summary</h2>
-          {error && <p className="error">{error}</p>}
-          {loading && <p className="hint">Generating summary…</p>}
+          {error && <p className="error fade-in">{error}</p>}
+          {loading && (
+            <p className="hint loading-hint fade-in">
+              <span className="spinner" aria-hidden="true" />
+              Generating summary…
+            </p>
+          )}
           {!loading && !error && !result && (
             <p className="hint">Upload a report and click Generate Summary.</p>
           )}
           {result && (
-            <div className="summary">
+            <div className="summary fade-in">
               <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {result.summary}
               </ReactMarkdown>

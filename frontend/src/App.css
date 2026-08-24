@@ -79,19 +79,77 @@
   margin-bottom: 1rem;
 }
 
-button {
+.generate-btn {
   cursor: pointer;
   border: none;
   border-radius: 6px;
-  background: #1a56db;
+  background: #ed3535;
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.1rem;
   font-size: 0.95rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition:
+    background-color 0.15s ease,
+    transform 0.1s ease,
+    box-shadow 0.15s ease;
 }
 
-button:disabled {
-  background: #a9b8d9;
+.generate-btn:hover:not(:disabled) {
+  background: #d42525;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(237, 53, 53, 0.3);
+}
+
+.generate-btn:active:not(:disabled) {
+  background: #b60100;
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.generate-btn:disabled {
+  background: #f3b9b9;
   cursor: not-allowed;
+}
+
+.spinner {
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex: 0 0 auto;
+}
+
+.loading-hint .spinner {
+  border: 2px solid rgba(237, 53, 53, 0.25);
+  border-top-color: #ed3535;
+  margin-right: 0.5rem;
+  vertical-align: -2px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.fade-in {
+  animation: fade-in 0.25s ease;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .preview {
