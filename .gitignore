@@ -4,9 +4,11 @@ secret/
 .env.*
 !.env.example
 
-# real patient PHI (sample lab reports) — repo is public, keep these local-only
+# real patient PHI (sample lab reports, and any summaries generated from them) —
+# repo is public, keep these local-only
 docs/reference docs/reports/
 docs/reference docs-*.zip
+docs/test results/
 
 # python
 __pycache__/
