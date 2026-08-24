@@ -76,11 +76,11 @@ function App() {
   return (
     <div className="page">
       <header className="page-header">
-        <img src={redsoftLogo} alt="Redsoft" className="brand-logo" />
         <div>
           <h1>AI Powered IVF Report Summary</h1>
           <p>Upload a report and get accurate summary in seconds!</p>
         </div>
+        <img src={redsoftLogo} alt="Redsoft" className="brand-logo" />
       </header>
 
       <main className="layout">
