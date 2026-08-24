@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import redsoftLogo from './assets/brand/logo-dark.png'
 import './App.css'
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL ?? ''
@@ -75,8 +76,11 @@ function App() {
   return (
     <div className="page">
       <header className="page-header">
-        <h1>IVF Report Summary</h1>
-        <p>Upload a report and get accurate summary in seconds!</p>
+        <img src={redsoftLogo} alt="Redsoft" className="brand-logo" />
+        <div>
+          <h1>AI Powered IVF Report Summary</h1>
+          <p>Upload a report and get accurate summary in seconds!</p>
+        </div>
       </header>
 
       <main className="layout">
