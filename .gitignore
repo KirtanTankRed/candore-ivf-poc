@@ -1,0 +1,28 @@
+# secrets — never commit
+secret/
+.env
+.env.*
+!.env.example
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# node
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# vercel
+.vercel
+
+# editor/OS
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
