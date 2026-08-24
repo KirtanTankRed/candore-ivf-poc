@@ -1,0 +1,54 @@
+## IVF Report Summary — POC Requirement
+
+### Objective
+
+Build a minimal software POC that allows a user to upload an IVF report and automatically generate a concise summary focused on what an experienced IVF practitioner would want to review quickly.
+
+### Core Flow
+
+**Upload Report → Extract Content → Generate Summary → Display Summary**
+
+### Requirements
+
+1. **Report Upload**
+
+   * Upload IVF report as PDF or image.
+   * Support normal digital PDFs as well as scanned/photographed reports.
+
+2. **AI Summary**
+
+   * Generate a concise, practitioner-focused summary.
+   * Highlight important patient, IVF cycle, clinical, embryo/oocyte, and outcome information.
+   * Avoid unnecessary details.
+   * Do not make unsupported clinical conclusions.
+
+3. **Report Access**
+
+   * Display the uploaded report alongside the generated summary.
+   * For the POC, simple local/file upload is sufficient.
+   * No Google Drive integration required.
+
+4. **Sample Reports**
+
+   * Prepare and test with 3–4 representative IVF reports.
+   * Include at least one scanned/printed report.
+
+5. **Image/OCR Testing**
+
+   * Print a sample report and take a photograph using a phone.
+   * Upload the photograph.
+   * Evaluate OCR/extraction and summary quality.
+
+6. **Validation**
+
+   * Check:
+
+     * Information extraction accuracy
+     * Important information missing from summary
+     * Incorrect/hallucinated information
+     * Summary readability
+     * Usefulness to an IVF practitioner
+
+### POC Success Criteria
+
+A doctor should be able to **quickly understand the important information in the IVF report without reading the entire report**.

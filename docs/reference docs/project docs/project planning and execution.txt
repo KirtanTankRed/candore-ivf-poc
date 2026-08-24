@@ -1,0 +1,110 @@
+
+### Recommended execution plan
+
+**1. Research & Understanding**
+
+* Understand basic IVF workflow and terminology.
+* Understand the **doctor's use case**: what information an experienced IVF practitioner needs at a glance.
+* Collect **3–4 representative IVF reports**:
+
+  * Normal digital PDF
+  * Complex/multi-page report
+  * Poorly formatted/scanned report
+  * Printed report photographed by phone
+
+**2. Requirement & POC Design**
+
+* Define exact input/output:
+
+  * **Input:** PDF/image
+  * **Output:** concise clinical summary text
+* Define the summary structure, e.g.:
+
+  * Patient basics
+  * IVF cycle details
+  * Key findings
+  * Embryo/oocyte information
+  * Important dates/values
+  * Abnormal/critical findings
+  * Current status / outcome
+* Decide what information **must never be omitted**.
+* Define success criteria: *Can an IVF practitioner understand the important points in 30–60 seconds?*
+
+**3. System Design & Tech Selection**
+Keep the architecture minimal:
+
+`Upload PDF/Image → Extract text/OCR → LLM → Structured Summary → Display`
+
+For the POC, avoid unnecessary infrastructure:
+
+* Simple frontend
+* Simple backend
+* PDF/image upload
+* OCR/document extraction
+* LLM API
+* No database unless needed
+* No Google Drive integration initially
+
+**4. Development**
+
+* Setup project/dependencies.
+* Build file upload.
+* Implement PDF text extraction.
+* Implement OCR for scanned/photographed documents.
+* Create summary-generation prompt.
+* Display:
+
+  * Uploaded file
+  * Generated summary
+* Add basic error handling.
+
+**5. Testing & Evaluation**
+Test specifically against your 3–4 sample reports.
+
+For each report check:
+
+* Extraction accuracy
+* Missing information
+* Incorrect interpretation
+* Hallucinations
+* Summary usefulness to an IVF practitioner
+* Summary length/readability
+
+Then test:
+
+* **Original PDF**
+* **Printed report → phone photo**
+* Different lighting/angles
+* Slightly skewed/cropped images
+
+This is important because **OCR quality may become the biggest POC limitation**, rather than the LLM itself.
+
+**6. Feedback & Polishing**
+
+* Get the summary reviewed by an IVF practitioner.
+* Ask specifically:
+
+  1. What important information is missing?
+  2. What information is unnecessary?
+  3. What should appear at the top?
+  4. What would make this summary clinically useful?
+* Refine prompt/output structure.
+* Fix critical UX/accuracy issues.
+
+### One important change
+
+I would move **"generate 3–4 sample reports"** into the **Research/Testing phase**, not development.
+
+Your core POC loop should be:
+
+**Realistic reports → extract → summarize → expert review → improve prompt → retest**
+
+That gives you a much better validation cycle than simply building the software first.
+
+### Final POC scope
+
+Keep V1 strictly to:
+
+> **Upload IVF report → Generate practitioner-focused summary → Display summary + uploaded document**
+
+No Google Drive, authentication, database, patient portal, complex dashboard, or automated clinical recommendations for the first POC.
